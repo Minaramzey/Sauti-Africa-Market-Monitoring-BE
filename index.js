@@ -1,24 +1,25 @@
 const express = require('express');
 const expressGraphQL = require('express-graphql');
-const { buildSchema } = require('graphql');
+const schema = require('./graphql_schema/schema');
 
-var schema = buildSchema(`
-    type Query {
-        hello: String
-    }
-`);
+//const { buildSchema } = require('graphql');
 
-var root = {
-    hello:() => {
-        return 'Hello World!';
-    }
-};
+// var schema = buildSchema(`
+//     type Query {
+//         hello: String
+//     }
+// `);
+
+// var root = {
+//     hello:() => {
+//         return 'Hello World!';
+//     }
+// };
 
 const app = express();
 app.use('/graphql', expressGraphQL({
-    graphiql: true,
-    rootValue: root,
-    schema: schema
+    schema,
+    graphiql: true
 }));
 
 app.listen(5000, () => {
