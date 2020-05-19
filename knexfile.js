@@ -1,4 +1,5 @@
 // Update with your config settings.
+require('dotenv').config()
 module.exports = {
 
   development: {
@@ -36,10 +37,13 @@ module.exports = {
     connection: process.env.DATABASE_URL,
     migrations: {
       directory: "./database/migrations",
+      tableName: 'knex_migrations',
     },
     seeds: {
       directory: "./database/seeds",
-  }
+  },
+  ssl: true,
+
 }
 
 };
