@@ -3,18 +3,18 @@ exports.up = function(knex) {
       table.increments();
   
       table
-        .text("username", 100)
+        .string("username", 100)
         .notNullable()
         .unique();
   
-      table.text("password", 100)
+      table.string("password", 100)
       .notNullable();
   
-      table.text("email", 100)
+      table.string("email", 100)
       .notNullable()
       .unique();
 
-      table.text("name", 100)
+      table.string("name", 100)
     });
   };
   
