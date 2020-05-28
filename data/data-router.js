@@ -73,3 +73,4 @@ router.get('/data-quality', (req, res) => {
     // })
     res.json({data_quality})
  });
+ module.exports = router;
