@@ -52,7 +52,7 @@ res.json({retail_data})
 });
 
 
-router.get('/data-quality', (req, res) => {
+router.get('/quality', (req, res) => {
     const data_quality=
         [{country:"KEN", marketplace:"Nairoi", category:"Wholesale", product:"Barley", timeliness:"713.0", data_length:"1843.0", completeness:"0.007", duplicates:"4.0", mode_D:"4.0",},
         {country:"UGA", marketplace:"Masindi", category:"Wholesale", product:"Yellow Bean", timeliness:"512.0", data_length:"1310.0", completeness:"0.010", duplicates:"2.0", mode_D:"3.0",},
