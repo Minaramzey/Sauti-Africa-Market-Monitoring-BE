@@ -49,16 +49,16 @@ router.get('/retail', (req, res) => {
     {country:"KEN", marketplace:"Nakuru", product:"Rice", price:"102", category:"retail", phase:"Crisis",},
     {country:"UGA", marketplace:"Tororo", product:"Mixed beans", price:"90", category:"retail", phase:"Stress",},
     {country:"UGA", marketplace:"Tororo", product:"Flour", price:"38", category:"retail", phase:"Alert",},
-    {country:"UGA", marketplace:"Kiboga", product:"Beans", price:"2800", category:"wholesale", phase:"Stress",},
-    {country:"UGA", marketplace:"Lira", product:"Soya Beans", price:"68", category:"wholesale", phase:"Crisis",},
-    {country:"KEN", marketplace:"Nairobi", product:"Maize", price:" 40", category:"wholesale", phase:"Alert",},
-    {country:"KEN", marketplace:"Kisumu", product:"Red Beans", price:"80", category:"wholesale", phase:"Stress",},
-    {country:"DRC", marketplace:"Goma", product:"Imported Rice", price:"96", category:"wholesale", phase:"Crisis",},
-    {country:"BDI", marketplace:"Gitega", product:"Dry Peas", price:"118", category:"wholesale", phase:"Stress",},
-    {country:"UGA", marketplace:"Masindi", product:"Maize", price:"38", category:"wholesale", phase:"Crisis",},
-    {country:"DRC", marketplace:"Lubumbashi", product:"Yellow Beans", price:"139", category:"wholesale", phase:"Crisis",},
-    {country:"TZA", marketplace:"Arusha", product:"Mbeya Rice", price:"86", category:"wholesale", phase:"Stress",},
-    {country:"UGA", marketplace:"Owino", product:"Imported Rice", price:"96", category:"wholesale", phase:"Alert",}]
+    {country:"UGA", marketplace:"Kiboga", product:"Beans", price:"2800", category:"retail", phase:"Stress",},
+    {country:"UGA", marketplace:"Lira", product:"Soya Beans", price:"68", category:"retail", phase:"Crisis",},
+    {country:"KEN", marketplace:"Nairobi", product:"Maize", price:" 40", category:"retail", phase:"Alert",},
+    {country:"KEN", marketplace:"Kisumu", product:"Red Beans", price:"80", category:"retail", phase:"Stress",},
+    {country:"DRC", marketplace:"Goma", product:"Imported Rice", price:"96", category:"retail", phase:"Crisis",},
+    {country:"BDI", marketplace:"Gitega", product:"Dry Peas", price:"118", category:"retail", phase:"Stress",},
+    {country:"UGA", marketplace:"Masindi", product:"Maize", price:"38", category:"retail", phase:"Crisis",},
+    {country:"DRC", marketplace:"Lubumbashi", product:"Yellow Beans", price:"139", category:"retail", phase:"Crisis",},
+    {country:"TZA", marketplace:"Arusha", product:"Mbeya Rice", price:"86", category:"retail", phase:"Stress",},
+    {country:"UGA", marketplace:"Owino", product:"Imported Rice", price:"96", category:"retail", phase:"Alert",}]
 // axios.get('URL HERE')
 // .then(response=> {
 //     console.log(response)
