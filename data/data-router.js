@@ -44,7 +44,7 @@ for (obj in wholesale) {
     };
     wsdata.push(wsObj);
 }
-res.status(200).json({wholesale : wsdata})
+res.status(200).json({wholesale_data : wsdata})
 })
 .catch(error =>{
     console.log(error)
@@ -91,7 +91,7 @@ router.get('/retail', (req, res) => {
         };
         rtdata.push(rtObj);
     }
-    res.status(200).json({retail : rtdata})
+    res.status(200).json({retail_data : rtdata})
     })
     .catch(error =>{
         console.log(error)
