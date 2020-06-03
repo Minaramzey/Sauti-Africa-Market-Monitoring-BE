@@ -5,71 +5,98 @@ const axios = require('axios');
 
 
 router.get('/wholesale', (req, res) => {
-    const wholesale_data = 
-    [{country:"UGA", marketplace:"Kiboga", product:"Maize", price:"550", category:"wholesale", phase:"Stress",},
-    {country:"UGA", marketplace:"Masindi", product:"Yellow Beans", price:"1500", category:"wholesale", phase:"Crisis",},
-    {country:"KEN", marketplace:"Eldoret", product:"Beans", price:"112", category:"wholesale", phase:"Alert",},
-    {country:"KEN", marketplace:"Nakuru", product:"Maize", price:"18", category:"wholesale", phase:"Stress",},
-    {country:"DRC", marketplace:"Lubumbashi", product:"Green Peas", price:"101", category:"wholesale", phase:"Crisis",},
-    {country:"BDI", marketplace:"Bujumbura", product:"Maize", price:"48", category:"wholesale", phase:"Stress",},
-    {country:"UGA", marketplace:"Busia", product:"Maize", price:"20", category:"wholesale", phase:"Crisis",},
-    {country:"KEN", marketplace:"Nakuru", product:"Rice", price:"82", category:"wholesale", phase:"Crisis",},
-    {country:"UGA", marketplace:"Tororo", product:"Mixed beans", price:"76", category:"wholesale", phase:"Stress",},
-    {country:"UGA", marketplace:"Tororo", product:"Flour", price:"27", category:"wholesale", phase:"Alert",},
-    {country:"UGA", marketplace:"Kiboga", product:"Beans", price:"1500", category:"wholesale", phase:"Stress",},
-    {country:"UGA", marketplace:"Lira", product:"Soya Beans", price:"59", category:"wholesale", phase:"Crisis",},
-    {country:"KEN", marketplace:"Nairobi", product:"Maize", price:"28", category:"wholesale", phase:"Alert",},
-    {country:"KEN", marketplace:"Kisumu", product:"Red Beans", price:"70", category:"wholesale", phase:"Stress",},
-    {country:"DRC", marketplace:"Goma", product:"Imported Rice", price:"85", category:"wholesale", phase:"Crisis",},
-    {country:"BDI", marketplace:"Gitega", product:"Dry Peas", price:"113", category:"wholesale", phase:"Stress",},
-    {country:"UGA", marketplace:"Masindi", product:"Maize", price:"36", category:"wholesale", phase:"Crisis",},
-    {country:"DRC", marketplace:"Lubumbashi", product:"Yellow Beans", price:"121", category:"wholesale", phase:"Crisis",},
-    {country:"TZA", marketplace:"Arusha", product:"Mbeya Rice", price:"78", category:"wholesale", phase:"Stress",},
-    {country:"UGA", marketplace:"Owino", product:"Imported Rice", price:"85", category:"wholesale", phase:"Alert",}]
-// axios.get('URL HERE')
-// .then(response=> {
-//     console.log(response)
-//     wholesale_data=response
-// })
-// .catch(error =>{
-//     console.log(error)
-// })
-res.json({wholesale_data})
+    // const wholesale_data = 
+    // [{country:"UGA", marketplace:"Kiboga", product:"Maize", price:"550", category:"wholesale", phase:"Stress",},
+    // {country:"UGA", marketplace:"Masindi", product:"Yellow Beans", price:"1500", category:"wholesale", phase:"Crisis",},
+    // {country:"KEN", marketplace:"Eldoret", product:"Beans", price:"112", category:"wholesale", phase:"Alert",},
+    // {country:"KEN", marketplace:"Nakuru", product:"Maize", price:"18", category:"wholesale", phase:"Stress",},
+    // {country:"DRC", marketplace:"Lubumbashi", product:"Green Peas", price:"101", category:"wholesale", phase:"Crisis",},
+    // {country:"BDI", marketplace:"Bujumbura", product:"Maize", price:"48", category:"wholesale", phase:"Stress",},
+    // {country:"UGA", marketplace:"Busia", product:"Maize", price:"20", category:"wholesale", phase:"Crisis",},
+    // {country:"KEN", marketplace:"Nakuru", product:"Rice", price:"82", category:"wholesale", phase:"Crisis",},
+    // {country:"UGA", marketplace:"Tororo", product:"Mixed beans", price:"76", category:"wholesale", phase:"Stress",},
+    // {country:"UGA", marketplace:"Tororo", product:"Flour", price:"27", category:"wholesale", phase:"Alert",},
+    // {country:"UGA", marketplace:"Kiboga", product:"Beans", price:"1500", category:"wholesale", phase:"Stress",},
+    // {country:"UGA", marketplace:"Lira", product:"Soya Beans", price:"59", category:"wholesale", phase:"Crisis",},
+    // {country:"KEN", marketplace:"Nairobi", product:"Maize", price:"28", category:"wholesale", phase:"Alert",},
+    // {country:"KEN", marketplace:"Kisumu", product:"Red Beans", price:"70", category:"wholesale", phase:"Stress",},
+    // {country:"DRC", marketplace:"Goma", product:"Imported Rice", price:"85", category:"wholesale", phase:"Crisis",},
+    // {country:"BDI", marketplace:"Gitega", product:"Dry Peas", price:"113", category:"wholesale", phase:"Stress",},
+    // {country:"UGA", marketplace:"Masindi", product:"Maize", price:"36", category:"wholesale", phase:"Crisis",},
+    // {country:"DRC", marketplace:"Lubumbashi", product:"Yellow Beans", price:"121", category:"wholesale", phase:"Crisis",},
+    // {country:"TZA", marketplace:"Arusha", product:"Mbeya Rice", price:"78", category:"wholesale", phase:"Stress",},
+    // {country:"UGA", marketplace:"Owino", product:"Imported Rice", price:"85", category:"wholesale", phase:"Alert",}]
+axios.get('https://sauti2-app.herokuapp.com/price-status-ws/')
+.then((response)=> {
+    console.log(response)
+let wholesale = response.data; 
+let wsObj = {};   
+const wsdata =[]
+
+for (obj in wholesale) {
+   wsObj = {
+      country: wholesale[obj].country,
+      marketplace: wholesale[obj].market,
+      product: wholesale[obj].product_name,
+      price: wholesale[obj].observed_price,
+      category: wholesale[obj].price_category,
+      phase: wholesale[obj].observed_class,
+    };
+    wsdata.push(wsObj);
+}
+res.status(200).json({wholesale : wsdata})
+})
+.catch(error =>{
+    console.log(error)
+})
 });
 
 router.get('/retail', (req, res) => {
-    const retail_data = 
-    [{country:"UGA", marketplace:"Kiboga", product:"Maize", price:"600", category:"retail", phase:"Stress",},
-    {country:"UGA", marketplace:"Masindi", product:"Yellow Beans", price:"2200", category:"retail", phase:"Crisis",},
-    {country:"KEN", marketplace:"Eldoret", product:"Beans", price:"182", category:"retail", phase:"Alert",},
-    {country:"KEN", marketplace:"Nakuru", product:"Maize", price:"30", category:"retail", phase:"Stress",},
-    {country:"DRC", marketplace:"Lubumbashi", product:"Green Peas", price:"114", category:"retail", phase:"Crisis",},
-    {country:"BDI", marketplace:"Bujumbura", product:"Maize", price:"51", category:"retail", phase:"Stress",},
-    {country:"UGA", marketplace:"Busia", product:"Maize", price:"24", category:"retail", phase:"Crisis",},
-    {country:"KEN", marketplace:"Nakuru", product:"Rice", price:"102", category:"retail", phase:"Crisis",},
-    {country:"UGA", marketplace:"Tororo", product:"Mixed beans", price:"90", category:"retail", phase:"Stress",},
-    {country:"UGA", marketplace:"Tororo", product:"Flour", price:"38", category:"retail", phase:"Alert",},
-    {country:"UGA", marketplace:"Kiboga", product:"Beans", price:"2800", category:"retail", phase:"Stress",},
-    {country:"UGA", marketplace:"Lira", product:"Soya Beans", price:"68", category:"retail", phase:"Crisis",},
-    {country:"KEN", marketplace:"Nairobi", product:"Maize", price:" 40", category:"retail", phase:"Alert",},
-    {country:"KEN", marketplace:"Kisumu", product:"Red Beans", price:"80", category:"retail", phase:"Stress",},
-    {country:"DRC", marketplace:"Goma", product:"Imported Rice", price:"96", category:"retail", phase:"Crisis",},
-    {country:"BDI", marketplace:"Gitega", product:"Dry Peas", price:"118", category:"retail", phase:"Stress",},
-    {country:"UGA", marketplace:"Masindi", product:"Maize", price:"38", category:"retail", phase:"Crisis",},
-    {country:"DRC", marketplace:"Lubumbashi", product:"Yellow Beans", price:"139", category:"retail", phase:"Crisis",},
-    {country:"TZA", marketplace:"Arusha", product:"Mbeya Rice", price:"86", category:"retail", phase:"Stress",},
-    {country:"UGA", marketplace:"Owino", product:"Imported Rice", price:"96", category:"retail", phase:"Alert",}]
-// axios.get('URL HERE')
-// .then(response=> {
-//     console.log(response)
-//     retail_data=response
-// })
-// .catch(error =>{
-//     console.log(error)
-// })
-res.json({retail_data})
-
-});
+    // const retail_data = 
+    // [{country:"UGA", marketplace:"Kiboga", product:"Maize", price:"600", category:"retail", phase:"Stress",},
+    // {country:"UGA", marketplace:"Masindi", product:"Yellow Beans", price:"2200", category:"retail", phase:"Crisis",},
+    // {country:"KEN", marketplace:"Eldoret", product:"Beans", price:"182", category:"retail", phase:"Alert",},
+    // {country:"KEN", marketplace:"Nakuru", product:"Maize", price:"30", category:"retail", phase:"Stress",},
+    // {country:"DRC", marketplace:"Lubumbashi", product:"Green Peas", price:"114", category:"retail", phase:"Crisis",},
+    // {country:"BDI", marketplace:"Bujumbura", product:"Maize", price:"51", category:"retail", phase:"Stress",},
+    // {country:"UGA", marketplace:"Busia", product:"Maize", price:"24", category:"retail", phase:"Crisis",},
+    // {country:"KEN", marketplace:"Nakuru", product:"Rice", price:"102", category:"retail", phase:"Crisis",},
+    // {country:"UGA", marketplace:"Tororo", product:"Mixed beans", price:"90", category:"retail", phase:"Stress",},
+    // {country:"UGA", marketplace:"Tororo", product:"Flour", price:"38", category:"retail", phase:"Alert",},
+    // {country:"UGA", marketplace:"Kiboga", product:"Beans", price:"2800", category:"retail", phase:"Stress",},
+    // {country:"UGA", marketplace:"Lira", product:"Soya Beans", price:"68", category:"retail", phase:"Crisis",},
+    // {country:"KEN", marketplace:"Nairobi", product:"Maize", price:" 40", category:"retail", phase:"Alert",},
+    // {country:"KEN", marketplace:"Kisumu", product:"Red Beans", price:"80", category:"retail", phase:"Stress",},
+    // {country:"DRC", marketplace:"Goma", product:"Imported Rice", price:"96", category:"retail", phase:"Crisis",},
+    // {country:"BDI", marketplace:"Gitega", product:"Dry Peas", price:"118", category:"retail", phase:"Stress",},
+    // {country:"UGA", marketplace:"Masindi", product:"Maize", price:"38", category:"retail", phase:"Crisis",},
+    // {country:"DRC", marketplace:"Lubumbashi", product:"Yellow Beans", price:"139", category:"retail", phase:"Crisis",},
+    // {country:"TZA", marketplace:"Arusha", product:"Mbeya Rice", price:"86", category:"retail", phase:"Stress",},
+    // {country:"UGA", marketplace:"Owino", product:"Imported Rice", price:"96", category:"retail", phase:"Alert",}]
+    axios.get('https://sauti2-app.herokuapp.com/price-status-rt/')
+    .then((response)=> {
+        console.log(response)
+    let retail = response.data; 
+    let rtObj = {};   
+    const rtdata =[]
+    
+    for (obj in retail) {
+       rtObj = {
+          country: retail[obj].country,
+          marketplace: retail[obj].market,
+          product: retail[obj].product_name,
+          price: retail[obj].observed_price,
+          category: retail[obj].price_category,
+          phase: retail[obj].observed_class,
+        };
+        rtdata.push(rtObj);
+    }
+    res.status(200).json({retail : rtdata})
+    })
+    .catch(error =>{
+        console.log(error)
+    })
+    });
 
 
 router.get('/quality', (req, res) => {
