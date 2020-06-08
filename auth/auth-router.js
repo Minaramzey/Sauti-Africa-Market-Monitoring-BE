@@ -20,15 +20,15 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  let { username, password } = req.body;
+  let { email, password } = req.body;
 
-  Users.findBy({ username })
+  Users.findBy({ email })
     .first()
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password)) {
         const token = generateToken(user);
 
-        res.status(200).json({ message: `Welcome, ${user.username}, ${user.name}, ${user.email}!`, token });
+        res.status(200).json({ message: `Welcome, ${user.name}, ${user.email}!`, token });
       } else {
         res.status(401).json({ message: "You shall not pass!" });
       }
@@ -41,13 +41,12 @@ router.post("/login", (req, res) => {
 function generateToken(user) {
   const payload = {
     userId: user.id,
-    username: user.username,
     email: user.email,
     name: user.name
   };
   const secret = secrets.jwtSecret;
   const options = {
-    expiresIn: "10m"
+    expiresIn: "1d"
   };
 
   return jwt.sign(payload, secret, options);
