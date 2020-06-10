@@ -29,8 +29,8 @@ router.post("/login", (req, res) => {
         const token = generateToken(user);
         const id = user.id;
         const email = user.email;
-
-        res.status(200).json({ id, email, token });
+        const name = user.name  
+        res.status(200).json({ id, email, name, token });
       } else {
         res.status(401).json({ message: "You shall not pass!" });
       }
