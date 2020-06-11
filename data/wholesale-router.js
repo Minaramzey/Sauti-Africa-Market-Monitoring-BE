@@ -26,7 +26,7 @@ router.get('/data', (req, res) => {
     // {country:"DRC", marketplace:"Lubumbashi", product:"Yellow Beans", price:"121", category:"wholesale", phase:"Crisis",},
     // {country:"TZA", marketplace:"Arusha", product:"Mbeya Rice", price:"78", category:"wholesale", phase:"Stress",},
     // {country:"UGA", marketplace:"Owino", product:"Imported Rice", price:"85", category:"wholesale", phase:"Alert",}]
-axios.get('https://sauti2-app.herokuapp.com/price-status-ws/')
+axios.get('https://sauti2-app.herokuapp.com/wholesale/labeled/')
 .then((response)=> {
     console.log(response)
 let wholesale = response.data; 
@@ -35,17 +35,17 @@ const wsdata =[]
 
 for (obj in wholesale) {
    wsObj = {
-      country: wholesale[obj].country,
-      marketplace: wholesale[obj].market,
-      product: wholesale[obj].product_name,
-      date: wholesale[obj].date_price,
-      price: wholesale[obj].observed_price,
+      method: wholesale[obj].class_method,
+      country: wholesale[obj].country_code,
       currency: wholesale[obj].currency_code,
-      category: wholesale[obj].price_category,
+      date: wholesale[obj].date_price,
+      marketplace: wholesale[obj].market_name,
       phase: wholesale[obj].observed_class,
-      stressness: wholesale[obj].stressness,
-      source_id: wholesale[obj].source_id,
-      market_id: wholesale[obj].market_id,
+      price: wholesale[obj].observed_price,
+      category: wholesale[obj].price_category,
+      product: wholesale[obj].product_name,
+      source: wholesale[obj].source_name,
+      stressness: wholesale[obj].stressness
     };
     wsdata.push(wsObj);
 }
