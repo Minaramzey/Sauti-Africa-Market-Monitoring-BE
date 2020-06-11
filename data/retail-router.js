@@ -24,7 +24,7 @@ router.get('/data', (req, res) => {
     // {country:"DRC", marketplace:"Lubumbashi", product:"Yellow Beans", price:"139", category:"retail", phase:"Crisis",},
     // {country:"TZA", marketplace:"Arusha", product:"Mbeya Rice", price:"86", category:"retail", phase:"Stress",},
     // {country:"UGA", marketplace:"Owino", product:"Imported Rice", price:"96", category:"retail", phase:"Alert",}]
-    axios.get('https://sauti2-app.herokuapp.com/price-status-rt/')
+    axios.get('https://sauti2-app.herokuapp.com/retail/labeled/')
     .then((response)=> {
         console.log(response)
     let retail = response.data; 
@@ -33,17 +33,17 @@ router.get('/data', (req, res) => {
     
     for (obj in retail) {
        rtObj = {
-          country: retail[obj].country,
-          marketplace: retail[obj].market,
-          product: retail[obj].product_name,
-          date: retail[obj].date_price,
-          price: retail[obj].observed_price,
-          currency: retail[obj].currency_code,
-          category: retail[obj].price_category,
-          phase: retail[obj].observed_class,
-          stressness: retail[obj].stressness,
-          source_id: retail[obj].source_id,
-          market_id: retail[obj].market_id,
+        method: retail[obj].class_method,
+        country: retail[obj].country_code,
+        currency: retail[obj].currency_code,
+        date: retail[obj].date_price,
+        marketplace: retail[obj].market_name,
+        phase: retail[obj].observed_class,
+        price: retail[obj].observed_price,
+        category: retail[obj].price_category,
+        product: retail[obj].product_name,
+        source: retail[obj].source_name,
+        stressness: retail[obj].stressness
         };
         rtdata.push(rtObj);
     }
