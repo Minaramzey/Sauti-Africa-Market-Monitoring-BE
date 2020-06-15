@@ -20,7 +20,7 @@ server.use(express.json());
 server.use("/users", restricted, usersRouter);
 server.use("/wholesale", restricted, wholesaleRouter)
 server.use("/retail", restricted, retailRouter)
-server.use("/quality", restricted, qualityRouter)
+// server.use("/quality", restricted, qualityRouter)
 server.use("/auth", authRouter);
 
 
