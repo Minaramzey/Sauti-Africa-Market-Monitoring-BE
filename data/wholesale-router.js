@@ -13,48 +13,49 @@ router.get('/', async(req, res) => {
     .then((response)=> {
         console.log(response)
         
-    let wholesale = response.data; 
-    let queryObj = {};   
-    const history =[]
+    let data = response.data; 
+    console.log(wholesale)
+    // let queryObj = {};   
+    // const history =[]
     
-    for (obj in wholesale) {
-       queryObj = {
-        start_date: wholesale[obj].start_date,
-        end_date: wholesale[obj].end_date,
-        number_of_observations: wholesale[obj].number_of_observations,
-        mode_d: wholesale[obj].Mode_D,
-        mean: wholesale[obj].mean,
-        min_price: wholesale[obj].min_price,
-        max_price: wholesale[obj].max_price,
-        days_between_start_end: wholesale[obj].days_between_start_end, 
-        completeness: wholesale[obj].completeness,
-        DQI: wholesale[obj].DQI,
-        DQI_cat: wholesale[obj].DQI_cat,
+    // for (obj in wholesale) {
+    //    queryObj = {
+    //     start_date: wholesale[obj].start_date,
+    //     end_date: wholesale[obj].end_date,
+    //     number_of_observations: wholesale[obj].number_of_observations,
+    //     mode_d: wholesale[obj].Mode_D,
+    //     mean: wholesale[obj].mean,
+    //     min_price: wholesale[obj].min_price,
+    //     max_price: wholesale[obj].max_price,
+    //     days_between_start_end: wholesale[obj].days_between_start_end, 
+    //     completeness: wholesale[obj].completeness,
+    //     DQI: wholesale[obj].DQI,
+    //     DQI_cat: wholesale[obj].DQI_cat,
 
-          product:wholesale[obj].product_name,
-          market_id:wholesale[obj].market_id,
-          marketplace:wholesale[obj].market_name,
-          country:wholesale[obj].country_code,
-          source_id:wholesale[obj].source_id,
-          source_name:wholesale[obj].source_name,
-          currency:wholesale[obj].currency_code,
-          unit:wholesale[obj].unit_scale,
-          date:wholesale[obj].date_price,
-          price:wholesale[obj].observed_price,
-          class:wholesale[obj].observed_class,
-          method:wholesale[obj].class_method,
-          forecasted_price:wholesale[obj].forecasted_price,
-          forecasted_class:wholesale[obj].forecasted_class,
-          forecasting_model:wholesale[obj].forecasting_model,
-          normal_band_limit:wholesale[obj].normal_band_limit,
-          stress_band_limit:wholesale[obj].stress_band_limit,
-          alert_band_limit:wholesale[obj].alert_band_limit,
-          stressness:wholesale[obj].stressness,
-          data_run_model:wholesale[obj].date_run_model
-        };
-        history.push(queryObj);
-    }
-    res.status(200).json(history)
+    //       product:wholesale[obj].product_name,
+    //       market_id:wholesale[obj].market_id,
+    //       marketplace:wholesale[obj].market_name,
+    //       country:wholesale[obj].country_code,
+    //       source_id:wholesale[obj].source_id,
+    //       source_name:wholesale[obj].source_name,
+    //       currency:wholesale[obj].currency_code,
+    //       unit:wholesale[obj].unit_scale,
+    //       date:wholesale[obj].date_price,
+    //       price:wholesale[obj].observed_price,
+    //       class:wholesale[obj].observed_class,
+    //       method:wholesale[obj].class_method,
+    //       forecasted_price:wholesale[obj].forecasted_price,
+    //       forecasted_class:wholesale[obj].forecasted_class,
+    //       forecasting_model:wholesale[obj].forecasting_model,
+    //       normal_band_limit:wholesale[obj].normal_band_limit,
+    //       stress_band_limit:wholesale[obj].stress_band_limit,
+    //       alert_band_limit:wholesale[obj].alert_band_limit,
+    //       stressness:wholesale[obj].stressness,
+    //       data_run_model:wholesale[obj].date_run_model
+    //     };
+    //     history.push(queryObj);
+    // }
+    res.status(200).json(data)
     })
     .catch(error =>{
         console.log(error)
