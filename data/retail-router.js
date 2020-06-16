@@ -7,13 +7,13 @@ router.get('/', async(req, res) => {
     const country = req.query.country;
     console.log(product, market, country);
     // console.log(req);
-    await axios.get(`https://sauti2-app.herokuapp.com/wholesale/?product_name=${product}&market_name=${market}&country_code=${country}`)
+    await axios.get(`https://sauti2-app.herokuapp.com/retail/?product_name=${product}&market_name=${market}&country_code=${country}`)
     .then((response)=> {
         console.log(response)
         
     let retail = response.data; 
     let queryObj = {};   
-    const qtdataql =[]
+    const history =[]
     
     for (obj in retail) {
        queryObj = {
@@ -32,7 +32,7 @@ router.get('/', async(req, res) => {
           product:retail[obj].product_name,
           market_id:retail[obj].market_id,
           marketplace:retail[obj].market_name,
-          counrty:retail[obj].country_code,
+          country:retail[obj].country_code,
           source_id:retail[obj].source_id,
           source_name:retail[obj].source_name,
           currency:retail[obj].currency_code,
@@ -50,9 +50,9 @@ router.get('/', async(req, res) => {
           stressness:retail[obj].stressness,
           data_run_model:retail[obj].date_run_model
         };
-        qtdataql.push(queryObj);
+        history.push(queryObj);
     }
-    res.status(200).json({retail_query_response: qtdataql})
+    res.status(200).json(history)
     })
     .catch(error =>{
         console.log(error)
@@ -65,7 +65,7 @@ router.get('/data', (req, res) => {
         console.log(response)
     let retail = response.data; 
     let rtObj = {};   
-    const rtdata =[]
+    const labeled =[]
     
     for (obj in retail) {
        rtObj = {
@@ -81,9 +81,9 @@ router.get('/data', (req, res) => {
         source: retail[obj].source_name,
         stressness: retail[obj].stressness
         };
-        rtdata.push(rtObj);
+        labeled.push(rtObj);
     }
-    res.status(200).json({retail_data : rtdata})
+    res.status(200).json(labeled)
     })
     .catch(error =>{
         console.log(error)
@@ -96,7 +96,7 @@ router.get('/data', (req, res) => {
             console.log(response)
         let retail = response.data; 
         let rtObj = {};   
-        const rtdata =[]
+        const latest =[]
         
         for (obj in retail) {
            rtObj = {
@@ -112,9 +112,9 @@ router.get('/data', (req, res) => {
             source: retail[obj].source_name,
             stressness: retail[obj].stressness
             };
-            rtdata.push(rtObj);
+            latest.push(rtObj);
         }
-        res.status(200).json({retail_latest : rtdata})
+        res.status(200).json(latest)
         })
         .catch(error =>{
             console.log(error)
@@ -127,7 +127,7 @@ router.get('/data', (req, res) => {
                 console.log(response)
             let quality = response.data; 
             let qtObj = {};   
-            const qtdatart =[]
+            const rtquality =[]
             
             for (obj in quality) {
                qtObj = {
@@ -148,9 +148,9 @@ router.get('/data', (req, res) => {
                   start_date: quality[obj].start,
                   timeliness: quality[obj].timeliness,
                 };
-                qtdatart.push(qtObj);
+                rtquality.push(qtObj);
             }
-            res.status(200).json({quality_retail : qtdatart})
+            res.status(200).json(rtquality)
             })
             .catch(error =>{
                 console.log(error)
