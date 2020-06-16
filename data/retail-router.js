@@ -11,48 +11,48 @@ router.get('/', async(req, res) => {
     .then((response)=> {
         console.log(response)
         
-    let retail = response.data; 
-    let queryObj = {};   
-    const history =[]
+    let data = response.data; 
+    // let queryObj = {};   
+    // const history = []
     
-    for (obj in retail) {
-       queryObj = {
-        start_date: retail[obj].start_date,
-        end_date: retail[obj].end_date,
-        number_of_observations: retail[obj].number_of_observations,
-        mode_d: retail[obj].Mode_D,
-        mean: retail[obj].mean,
-        min_price: retail[obj].min_price,
-        max_price: retail[obj].max_price,
-        days_between_start_end: retail[obj].days_between_start_end, 
-        completeness: retail[obj].completeness,
-        DQI: retail[obj].DQI,
-        DQI_cat: retail[obj].DQI_cat,
+    // for (obj in retail) {
+    //    queryObj = {
+    //     start_date: retail[obj].start_date,
+    //     end_date: retail[obj].end_date,
+    //     number_of_observations: retail[obj].number_of_observations,
+    //     mode_d: retail[obj].Mode_D,
+    //     mean: retail[obj].mean,
+    //     min_price: retail[obj].min_price,
+    //     max_price: retail[obj].max_price,
+    //     days_between_start_end: retail[obj].days_between_start_end, 
+    //     completeness: retail[obj].completeness,
+    //     DQI: retail[obj].DQI,
+    //     DQI_cat: retail[obj].DQI_cat,
 
-          product:retail[obj].product_name,
-          market_id:retail[obj].market_id,
-          marketplace:retail[obj].market_name,
-          country:retail[obj].country_code,
-          source_id:retail[obj].source_id,
-          source_name:retail[obj].source_name,
-          currency:retail[obj].currency_code,
-          unit:retail[obj].unit_scale,
-          date:retail[obj].date_price,
-          price:retail[obj].observed_price,
-          class:retail[obj].observed_class,
-          method:retail[obj].class_method,
-          forecasted_price:retail[obj].forecasted_price,
-          forecasted_class:retail[obj].forecasted_class,
-          forecasting_model:retail[obj].forecasting_model,
-          normal_band_limit:retail[obj].normal_band_limit,
-          stress_band_limit:retail[obj].stress_band_limit,
-          alert_band_limit:retail[obj].alert_band_limit,
-          stressness:retail[obj].stressness,
-          data_run_model:retail[obj].date_run_model
-        };
-        history.push(queryObj);
-    }
-    res.status(200).json(history)
+    //       product:retail[obj].product_name,
+    //       market_id:retail[obj].market_id,
+    //       marketplace:retail[obj].market_name,
+    //       country:retail[obj].country_code,
+    //       source_id:retail[obj].source_id,
+    //       source_name:retail[obj].source_name,
+    //       currency:retail[obj].currency_code,
+    //       unit:retail[obj].unit_scale,
+    //       date:retail[obj].date_price,
+    //       price:retail[obj].observed_price,
+    //       class:retail[obj].observed_class,
+    //       method:retail[obj].class_method,
+    //       forecasted_price:retail[obj].forecasted_price,
+    //       forecasted_class:retail[obj].forecasted_class,
+    //       forecasting_model:retail[obj].forecasting_model,
+    //       normal_band_limit:retail[obj].normal_band_limit,
+    //       stress_band_limit:retail[obj].stress_band_limit,
+    //       alert_band_limit:retail[obj].alert_band_limit,
+    //       stressness:retail[obj].stressness,
+    //       data_run_model:retail[obj].date_run_model
+    //     };
+    //     history.push(queryObj);
+    // }
+    res.status(200).json(data)
     })
     .catch(error =>{
         console.log(error)
