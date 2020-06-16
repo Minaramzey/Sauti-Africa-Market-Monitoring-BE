@@ -15,7 +15,7 @@ router.get('/', async(req, res) => {
         
     let wholesale = response.data; 
     let queryObj = {};   
-    const qtdataql =[]
+    const history =[]
     
     for (obj in wholesale) {
        queryObj = {
@@ -34,7 +34,7 @@ router.get('/', async(req, res) => {
           product:wholesale[obj].product_name,
           market_id:wholesale[obj].market_id,
           marketplace:wholesale[obj].market_name,
-          counrty:wholesale[obj].country_code,
+          country:wholesale[obj].country_code,
           source_id:wholesale[obj].source_id,
           source_name:wholesale[obj].source_name,
           currency:wholesale[obj].currency_code,
@@ -52,9 +52,9 @@ router.get('/', async(req, res) => {
           stressness:wholesale[obj].stressness,
           data_run_model:wholesale[obj].date_run_model
         };
-        qtdataql.push(queryObj);
+        history.push(queryObj);
     }
-    res.status(200).json({wholesale_query_response: qtdataql})
+    res.status(200).json(history)
     })
     .catch(error =>{
         console.log(error)
@@ -67,7 +67,7 @@ axios.get('https://sauti2-app.herokuapp.com/wholesale/labeled/')
     console.log(response)
 let wholesale = response.data; 
 let wsObj = {};   
-const wsdata =[]
+const labeled =[]
 
 for (obj in wholesale) {
    wsObj = {
@@ -83,9 +83,9 @@ for (obj in wholesale) {
       source: wholesale[obj].source_name,
       stressness: wholesale[obj].stressness
     };
-    wsdata.push(wsObj);
+   labeled.push(wsObj);
 }
-res.status(200).json({wholesale_data : wsdata})
+res.status(200).json(labeled)
 })
 .catch(error =>{
     console.log(error)
@@ -101,7 +101,7 @@ axios.get('https://sauti2-app.herokuapp.com/wholesale/labeled/latest/')
     console.log(response)
 let wholesale = response.data; 
 let wsObj = {};   
-const wsdata =[]
+const latest =[]
 
 for (obj in wholesale) {
    wsObj = {
@@ -117,9 +117,9 @@ for (obj in wholesale) {
       source: wholesale[obj].source_name,
       stressness: wholesale[obj].stressness
     };
-    wsdata.push(wsObj);
+   latest.push(wsObj);
 }
-res.status(200).json({wholesale_latest : wsdata})
+res.status(200).json(latest)
 })
 .catch(error =>{
     console.log(error)
@@ -156,7 +156,7 @@ router.get('/quality', (req, res) => {
         };
         qtdata.push(qtObj);
     }
-    res.status(200).json({quality_wholesale : qtdata})
+    res.status(200).json(qtdata)
     })
     .catch(error =>{
         console.log(error)
