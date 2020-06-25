@@ -56,4 +56,4 @@ Remember that this project is licensed under the MIT license, and by submitting 
 
 See [Frontend Documentation](https://github.com/Lambda-School-Labs/Sauti-Africa-Market-Monitoring-FE/blob/master/README.md) for details on the front-end of the project.
 
-See [Data Science Documentation](https://github.com/Lambda-School-Labs/Sauti-Africa-Market-Monitoring-DS/blob/master/README.md) for details on the front-end of the project.
+See [Data Science Documentation](https://github.com/Lambda-School-Labs/Sauti-Africa-Market-Monitoring-DS/blob/master/README.md) for details on the data-science of the project.
