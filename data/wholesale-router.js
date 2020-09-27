@@ -9,7 +9,7 @@ router.get('/', async(req, res) => {
     const country = req.query.country;
     console.log(product, market, country);
     // console.log(req);
-    await axios.get(`https://sauti2-app.herokuapp.com/wholesale/?product_name=${product}&market_name=${market}&country_code=${country}`)
+    await axios.get(`https://sauti-market-monitoring.herokuapp.com/wholesale/?product_name=${product}&market_name=${market}&country_code=${country}`)
     .then((response)=> {
         console.log(response)  
         let data = response.data; 
@@ -21,7 +21,7 @@ router.get('/', async(req, res) => {
     });
 
 router.get('/data', (req, res) => {
-axios.get('https://sauti2-app.herokuapp.com/wholesale/labeled/')
+axios.get('https://sauti-market-monitoring.herokuapp.com/wholesale/labeled/')
 .then((response)=> {
     console.log(response)
 let wholesale = response.data; 
@@ -37,7 +37,7 @@ res.status(200).json(wholesale)
 
 //Latest wholesale data 
 router.get('/data/latest', (req, res) => {
-axios.get('https://sauti2-app.herokuapp.com/wholesale/labeled/latest/')
+axios.get('https://sauti-market-monitoring.herokuapp.com/wholesale/labeled/latest/')
 .then((response)=> {
     console.log(response)
 let latestwholesale = response.data; 
@@ -51,7 +51,7 @@ res.status(200).json(latestwholesale)
 
 //Wholesale Quality Route
 router.get('/quality', (req, res) => {
-    axios.get('https://sauti2-app.herokuapp.com/wholesale/data-quality/')
+    axios.get('https://sauti-market-monitoring.herokuapp.com/wholesale/data-quality/')
     .then((response)=> {
         console.log(response)
     let quality = response.data; 
