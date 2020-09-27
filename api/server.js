@@ -4,7 +4,7 @@ const usersRouter = require("../users/users-router");
 const authRouter = require("../auth//auth-router");
 const wholesaleRouter = require("../data/wholesale-router")
 const retailRouter = require("../data/retail-router")
-const qualityRouter = require("../data/quality-router")
+// const qualityRouter = require("../data/quality-router")
 const restricted = require("../auth/authenticator");
 
 
