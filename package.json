@@ -11,12 +11,12 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "git-secret": "^1.0.5",
-    "helmet": "^3.22.0",
+    "helmet": "^3.23.3",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.21.1",
+    "knex": "^0.21.5",
     "nodemon": "^2.0.4",
-    "pg": "^8.2.1",
-    "sqlite3": "^4.2.0"
+    "pg": "^8.3.3"
+    
   },
   "devDependencies": {},
   "scripts": {
