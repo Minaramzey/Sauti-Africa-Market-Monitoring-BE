@@ -1,7 +1,7 @@
 {
   "name": "sauti-africa-market-monitoring-be",
   "version": "1.0.0",
-  "description": "Project Link:[Sauti Africa Market Monitoring](https://master.d2p16mt6y3bvx5.amplifyapp.com/)\r # API Documentation",
+  "description": "",
   "main": "index.js",
   "dependencies": {
     "axios": "^0.19.2",
