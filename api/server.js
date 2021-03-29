@@ -10,11 +10,11 @@ const restricted = require("../auth/authenticator");
 
 
 const server = express();
-const cors = require("cors");
+// const cors = require("cors");
 const helmet = require('helmet');
 
 server.use(helmet());
-server.use(cors());
+// server.use(cors());
 server.use(express.json());
 
 server.use("/users", restricted, usersRouter);
